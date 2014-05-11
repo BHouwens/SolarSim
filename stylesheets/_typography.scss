@@ -1,0 +1,21 @@
+*{
+     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+@font-face {
+    font-family: 'Winterthur';
+    src: url('../fonts/WinterthurCondensed-webfont.eot');
+    src: url('../fonts/WinterthurCondensed-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/WinterthurCondensed-webfont.woff') format('woff'),
+         url('..fonts/WinterthurCondensed-webfont.ttf') format('truetype'),
+         url('..fonts/WinterthurCondensed-webfont.svg#winterthurcondensedregular') format('svg');
+}
+
+@mixin bodyCopy($size, $weight){
+    font-family: 'Winterthur', sans-serif;
+    font-size:$size;
+    font-weight: $weight;
+}

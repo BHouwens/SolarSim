@@ -1,0 +1,76 @@
+//VARIABLES
+$blue: #198F90;
+
+@import "typography";
+    
+//-------------------MAIN GOODS------------------------------//
+    
+body{
+    background:black;
+}
+
+.container{
+    display:block;
+    overflow:hidden;
+    height:100%;
+    width:50px;
+    background:$blue;
+    transition:0.2s;
+    left:0;
+    top:0;
+    position:absolute;
+    z-index:2;
+    
+    &:hover{
+        width:120px;
+    }
+}
+
+#main{
+    list-style:none;
+    padding:0;
+    margin-left:0px;
+}
+
+#main a{
+    display:block;
+    text-decoration:none;
+    color:white;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:14px;
+    text-transform: uppercase;
+    padding-left:10px;
+    padding-bottom:20px;
+    padding-top:20px;
+    transition:0.4s;
+    
+    &:hover{
+        background:white;
+        color:black;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

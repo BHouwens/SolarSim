@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+	<head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta charset="utf-8">
+        <title>Home | SolarSim</title>
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.5, maximum-scale=1.5">
+        <meta name="description" content="SolarSim is a free, 3D solar system simulator for younger learners to explore and learn from.">
+        <link rel="stylesheet" href="stylesheets/normalize.min.css">
+        <link rel="stylesheet" href="stylesheets/modal.css">
+        <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
+    </head>
+    <body>
+        <div id="modal">
+            <section id="float-left">
+                <img src="images/space-man.svg" id="space-man"/>
+            </section>    
+            <section id="float-right">
+                <img src="images/logo.png" id="logo" alt="solarsim" title="SolarSim"/>
+                <p>SolarSim is a free solar system simulator for young learners and their teachers.</p>
+                <a href="earth.php" id="enter" alt="enter button">Want to explore?</a>
+                <p class="disclaimer"><span>Note:</span> SolarSim runs on WebGL, which is still an experimental technology for the web. For things to work properly, it's important that you view it in one of the latest browsers (if you're using Chrome, the latest Firefox or Internet Explorer 11, you should be good to go). If you use Safari, you'll need to enable WebGL in your settings. While every effort has been made to make SolarSim accessible across devices, due to the nature of the technology it will only work well on your desktop computer or laptop (sorry smart phones and tablets!).</p>
+            </section>
+            <script>
+                var button = document.getElementById('enter');
+                button.addEventListener("mouseover", function(){
+                    button.textContent = "Yeah let's explore!";
+                }, false);
+                button.addEventListener("mouseout", function(){
+                    button.textContent = "Want to explore?";
+                }, false);
+        </script>
+        </div>
+    </body>
+</html>

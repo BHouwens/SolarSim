@@ -1,0 +1,58 @@
+* {
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+}
+
+@font-face {
+	font-family: 'Winterthur';
+	src: url("../fonts/WinterthurCondensed-webfont.eot");
+	src: url("../fonts/WinterthurCondensed-webfont.eot?#iefix") format("embedded-opentype"),url("../fonts/WinterthurCondensed-webfont.woff") format("woff"),url("..fonts/WinterthurCondensed-webfont.ttf") format("truetype"),url("..fonts/WinterthurCondensed-webfont.svg#winterthurcondensedregular") format("svg");
+}
+
+body {
+	background: black;
+}
+
+.container {
+	display: block;
+	overflow: hidden;
+	height: 100%;
+	width: 50px;
+	background: #198f90;
+	transition: 0.2s;
+	left: 0;
+	top: 0;
+	position: absolute;
+	z-index: 2;
+}
+
+.container:hover {
+	width: 120px;
+}
+
+#main {
+	list-style: none;
+	padding: 0;
+	margin-left: 0px;
+}
+
+#main a {
+	display: block;
+	text-decoration: none;
+	color: white;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	text-transform: uppercase;
+	padding-left: 10px;
+	padding-bottom: 20px;
+	padding-top: 20px;
+	transition: 0.4s;
+}
+
+#main a:hover {
+	background: white;
+	color: black;
+}
+
