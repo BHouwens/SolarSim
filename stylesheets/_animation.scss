@@ -1,0 +1,11 @@
+@mixin keyframe($name){
+    $vendors: (webkit, moz, ms);
+        @each $vendor in $vendors {
+            #{"@-" + $vendor + "-keyframes " + $name}{
+                @content;
+            }
+        }
+    @keyframes #{$name}{
+        @content;
+    }
+}

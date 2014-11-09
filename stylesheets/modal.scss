@@ -1,6 +1,5 @@
-$blue: #198F90;
-$peach: #f1594e;
-$bloodPeach: #bf443b;
+$peach: #FF847C;
+$bloodPeach: #E84A5F;
 
 @import "typography";
 @import "buttons";
@@ -65,11 +64,9 @@ span{
     text-decoration: none;
     text-shadow: 0 1px $bloodPeach;
     border: 2px solid $bloodPeach;
-    @include innerBorder(#ffa39c);
     @include roundCorners(10px);
     transition:0.2s;
     background:$peach;
-    @include dropShadow(2px, white);
     
     &:hover{
         background:#f56e64;

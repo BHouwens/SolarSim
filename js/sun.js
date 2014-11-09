@@ -17,7 +17,7 @@ var container;
 
 			var clock = new THREE.Clock();
 
-			var camera, scene, renderer, composer;
+			var camera, scene, renderer, composer, zoomed = false;
 
 			var uniforms, material, sunMesh;
 
@@ -36,18 +36,14 @@ var container;
                 
                 //camera
 				camera = new THREE.PerspectiveCamera( 35, windowHalfX / windowHalfY, 1, 3000 );
-				camera.position.z = 4.2;
+				camera.position.z = 6.2;
                 camera.position.y = -0.15;
 
 				scene = new THREE.Scene();
-                
-                //controls
-                controls = new THREE.OrbitControls( camera );
-                controls.addEventListener( 'change', render );
 
 				uniforms = {
 
-					fogDensity: { type: "f", value: 0.35 },
+					fogDensity: { type: "f", value: 0.17 },
 					fogColor: { type: "v3", value: new THREE.Vector3( 0, 0, 0 ) },
 					time: { type: "f", value: 1.0 },
 					resolution: { type: "v2", value: new THREE.Vector2() },
@@ -105,6 +101,16 @@ var container;
 				onWindowResize();
 
 				window.addEventListener( 'resize', onWindowResize, false );
+				$("#zoom").on('click', function(){
+                  if (zoomed == false){
+                    zoomed = true;
+                    $('.info-container').animate({'opacity': 0}, 400);
+                  }
+                });
+
+				//controls
+                controls = new THREE.OrbitControls( camera, renderer.domElement);
+                controls.addEventListener( 'change', render );
 
 			}
 
@@ -135,6 +141,11 @@ var container;
 			function render() {
 
 				var delta = 5 * clock.getDelta();
+				if (camera.position.z > 4){
+            		if (zoomed){
+              			camera.position.z -= 0.03;
+            		}
+          		}
 
 				uniforms.time.value += 0.2 * delta;
 

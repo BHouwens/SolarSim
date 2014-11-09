@@ -1,0 +1,40 @@
+/*=================PLACEHOLDERS=================*/
+
+           
+%centre{
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+%clearfix {
+    &:before,
+    &:after {
+        content: "";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+%fill{
+   width:100%;
+   height:auto;
+}
+
+%borderBox{
+   -webkit-box-sizing: border-box;
+   -moz-box-sizing: border-box;
+   box-sizing: border-box;
+}
+
+%subheading{
+  text-transform: uppercase;
+  text-align: center;
+  font-family: 'Proxima Nova Bold', Helvetica, Arial, sans-serif;
+}
+
+%backgroundSize{
+  background-size: 100%;
+}

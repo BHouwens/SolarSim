@@ -32,9 +32,7 @@ var mercButton = document.getElementById('mercury'),
                 camera = new THREE.PerspectiveCamera(angle, aspect, near, far);
                 camera.position.set(1380, -17, 394);
                 
-                //controls
-                controls = new THREE.OrbitControls( camera );
-                controls.addEventListener( 'change', render );
+
                 
                 //scene
                 scene = new THREE.Scene();
@@ -79,6 +77,10 @@ var mercButton = document.getElementById('mercury'),
                 renderer.shadowMapType = THREE.PCFShadowMap;
                 
                 window.addEventListener('resize', onWindowResize, false); 
+
+                //controls
+                controls = new THREE.OrbitControls( camera, renderer.domElement);
+                controls.addEventListener( 'change', render );
             }
             
             function solarSetUp(){

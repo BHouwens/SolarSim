@@ -11,7 +11,7 @@ var angle = 45,
       far = 10000;
 
 //mesh vars
-var marsMesh;
+var marsMesh, zoomed = false;
             
             init();
             animate();
@@ -24,10 +24,6 @@ var marsMesh;
                 //cam
                 camera = new THREE.PerspectiveCamera(angle, aspect, near, far);
                 camera.position.set(1380, -17, 394);
-                
-                //controls
-                controls = new THREE.OrbitControls( camera );
-                controls.addEventListener( 'change', render );
                 
                 //scene
                 scene = new THREE.Scene();
@@ -59,7 +55,17 @@ var marsMesh;
                 renderer.shadowMapEnabled = true;
                 renderer.shadowMapType = THREE.PCFShadowMap;
                 
-                window.addEventListener('resize', onWindowResize, false);               
+                window.addEventListener('resize', onWindowResize, false);
+                $("#zoom").on('click', function(){
+                  if (zoomed == false){
+                    zoomed = true;
+                    $('.info-container').animate({'opacity': 0}, 400);
+                  }
+                });  
+
+                //controls
+                controls = new THREE.OrbitControls( camera, renderer.domElement);
+                controls.addEventListener( 'change', render );            
             }
             
             function solarSetUp(){
@@ -105,7 +111,13 @@ var marsMesh;
 			}
             
              function render(){
-                 var delta = clock.getDelta();
+                if (camera.position.x > 800){
+                    if (zoomed){
+                        camera.position.x -= 3;
+                    }
+                }
+                
+                var delta = clock.getDelta();
 
 				marsMesh.rotation.y += rotationSpeed * delta;
                 renderer.clear();

@@ -70,25 +70,19 @@ span {
 	margin-top: 40px;
 	margin-bottom: 50px;
 	text-decoration: none;
-	text-shadow: 0 1px #bf443b;
-	border: 2px solid #bf443b;
-	-moz-box-shadow: inset 2px 2px 2px 2px #ffa39c;
-	-webkit-box-shadow: inset 2px 2px 2px 2px #ffa39c;
-	box-shadow: inset 2px 2px 2px 2px #ffa39c;
+	text-shadow: 0 1px #e84a5f;
+	border: 2px solid #e84a5f;
 	border-radius: 10px;
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	-o-border-radius: 10px;
 	transition: 0.2s;
-	background: #f1594e;
-	-webkit-box-shadow: 0px 2px 2px rgba(0,0,0,0.3),inset 2px 2px 2px 2px #fff;
-	-moz-box-shadow: 0px 2px 2px rgba(0,0,0,0.3),inset 2px 2px 2px 2px #fff;
-	box-shadow: 0px 2px 2px rgba(0,0,0,0.3),inset 2px 2px 2px 2px #fff;
+	background: #ff847c;
 }
 
 #enter:hover {
 	background: #f56e64;
-	border-bottom: 4px solid #bf443b;
+	border-bottom: 4px solid #e84a5f;
 }
 
 #space-man {
@@ -100,10 +94,6 @@ span {
 }
 
 @media only screen and (min-width: 1px) {
-
-#space-man {
-	display: none;
-}
 
 #float-left {
 	width: 100%;

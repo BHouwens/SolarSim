@@ -11,7 +11,7 @@ var angle = 45,
       far = 10000;
 
 //mesh vars
-var jupMesh;
+var jupMesh, zoomed = false;
             
             init();
             animate();
@@ -60,7 +60,12 @@ var jupMesh;
                 renderer.shadowMapType = THREE.PCFShadowMap;
                 
                 window.addEventListener('resize', onWindowResize, false); 
-
+                $("#zoom").on('click', function(){
+                  if (zoomed == false){
+                    zoomed = true;
+                    $('.info-container').animate({'opacity': 0}, 400);
+                  }
+                });
                 
             }
             
@@ -105,7 +110,12 @@ var jupMesh;
 			}
             
              function render(){
-                 var delta = clock.getDelta();
+                var delta = clock.getDelta();
+                if (camera.position.x > 800){
+                    if (zoomed){
+                        camera.position.x -= 3;
+                    }
+                }
 
 				jupMesh.rotation.y += rotationSpeed * delta;
                 renderer.clear();

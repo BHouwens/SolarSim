@@ -4,15 +4,3 @@
 	-moz-border-radius:$round;
 	-o-border-radius:$round;
 }
-
-@mixin innerBorder($colour){
-    -moz-box-shadow: inset 2px 2px 2px 2px $colour;
-    -webkit-box-shadow: inset 2px 2px 2px 2px $colour;    
-    box-shadow: inset 2px 2px 2px 2px $colour;
-}
-
-@mixin dropShadow($spread, $colour){
-	-webkit-box-shadow:0px $spread $spread rgba(0,0,0,0.3), inset 2px 2px 2px 2px $colour;
-	-moz-box-shadow:0px $spread $spread rgba(0,0,0,0.3), inset 2px 2px 2px 2px $colour;
-	box-shadow:0px $spread $spread rgba(0,0,0,0.3), inset 2px 2px 2px 2px $colour;
-}

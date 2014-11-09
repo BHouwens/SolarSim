@@ -33,7 +33,6 @@ module.exports = function(grunt){
                 
                 files: {
                     'stylesheets/main.css': 'stylesheets/main.scss',
-                    'stylesheets/main.css':'stylesheets/_*.scss',
                     'stylesheets/modal.css': 'stylesheets/modal.scss'
                 }
             }
@@ -54,7 +53,7 @@ module.exports = function(grunt){
             },
         
             css:{
-                files: ['stylesheets/main.scss', 'stylesheets/modal.scss', 'stylesheets/_typography.scss', 'stylesheets/_buttons.scss'],
+                files: ['stylesheets/main.scss', 'stylesheets/modal.scss'],
                 tasks: ['sass'],
                 options:{
                     spawn: false,

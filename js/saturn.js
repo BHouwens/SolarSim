@@ -11,7 +11,7 @@ var angle = 45,
       far = 10000;
 
 //mesh vars
-var satMesh, ringsMesh;
+var satMesh, ringsMesh, zoomed = false;
 
 //custom UV mapping for ring geometry -- thanks to jerome etienne for this block
 var customRingGeometry = function ( innerRadius, outerRadius, thetaSegments ) {
@@ -92,10 +92,6 @@ var customRingGeometry = function ( innerRadius, outerRadius, thetaSegments ) {
                 camera = new THREE.PerspectiveCamera(angle, aspect, near, far);
                 camera.position.set(1380, -17, 394);
                 
-                //controls
-                controls = new THREE.OrbitControls( camera );
-                controls.addEventListener( 'change', render );
-                
                 //scene
                 scene = new THREE.Scene();
                 camera.lookAt(scene.position);
@@ -129,9 +125,17 @@ var customRingGeometry = function ( innerRadius, outerRadius, thetaSegments ) {
                 renderer.shadowMapEnabled = true;
                 renderer.shadowMapType = THREE.PCFShadowMap;
                 
-                window.addEventListener('resize', onWindowResize, false); 
+                window.addEventListener('resize', onWindowResize, false);
+                $("#zoom").on('click', function(){
+                  if (zoomed == false){
+                    zoomed = true;
+                    $('.info-container').animate({'opacity': 0}, 400);
+                  }
+                });
 
-                
+                //controls
+                controls = new THREE.OrbitControls( camera, renderer.domElement);
+                controls.addEventListener( 'change', render );
             }
             
             function solarSetUp(){
@@ -194,7 +198,12 @@ var customRingGeometry = function ( innerRadius, outerRadius, thetaSegments ) {
 			}
             
              function render(){
-                 var delta = clock.getDelta();
+                var delta = clock.getDelta();
+                if (camera.position.x > 800){
+                    if (zoomed){
+                        camera.position.x -= 3;
+                    }
+                }
 
 				satMesh.rotation.y += rotationSpeed * delta;
                 renderer.clear();

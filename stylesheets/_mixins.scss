@@ -1,0 +1,52 @@
+/*======================MIXINS==========================*/
+
+@mixin attention(){
+    &:hover,
+    &:active,
+    &:focus{
+    	@content;
+    }
+}
+
+@mixin absoluteCentre ($width: 100%, $position: absolute){
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    width: $width;
+    position: $position;
+    margin-left:auto;
+    margin-right:auto;
+    display: block;
+}
+
+@mixin size ($width, $height: $width){
+    width: $width;
+    height: $height;
+}
+
+@mixin prefix($map, $vendors: webkit moz ms o){
+    @each $prop, $value in $map{
+        @if $vendors{
+            @each $vendor in $vendors{
+                #{"-" + $vendor + "-" + $prop}: #{$value};
+	}
+        }
+        #{$prop}: #{$value}; //else dump everything
+   }
+}
+
+@mixin breakpoint($breakpoint){
+   $map : (small: 480px, medium: 768px, large: 1140px);
+  
+   @if map-has-key($map, $breakpoint){
+   	@media all and (min-width: #{map-get($map, $breakpoint)}){
+   		@content;
+   	}
+   }
+   
+   @else{
+   	@warn "There is no value #{$breakpoint} in the list of breakpoints";
+   }
+}
+

@@ -11,7 +11,7 @@ var angle = 45,
       far = 10000;
 
 //mesh vars
-var venusMesh;
+var venusMesh, Atmos, AtmosMat, zoomed = false;
             
             init();
             animate();
@@ -24,10 +24,6 @@ var venusMesh;
                 //cam
                 camera = new THREE.PerspectiveCamera(angle, aspect, near, far);
                 camera.position.set(1380, -17, 394);
-                
-                //controls
-                controls = new THREE.OrbitControls( camera );
-                controls.addEventListener( 'change', render );
                 
                 //scene
                 scene = new THREE.Scene();
@@ -60,12 +56,20 @@ var venusMesh;
                 renderer.shadowMapType = THREE.PCFShadowMap;
                 
                 window.addEventListener('resize', onWindowResize, false); 
+                $("#zoom").on('click', function(){
+                  if (zoomed == false){
+                    zoomed = true;
+                    $('.info-container').animate({'opacity': 0}, 400);
+                  }
+                });
 
-                
+                //controls
+                controls = new THREE.OrbitControls( camera, renderer.domElement);
+                controls.addEventListener( 'change', render );
             }
             
             function solarSetUp(){
-                //MARS
+                //VENUS
                 var venusGeo = new THREE.SphereGeometry(200, 400, 400),
                 venusMat = new THREE.MeshPhongMaterial();
                 venusMesh = new THREE.Mesh(venusGeo, venusMat);
@@ -76,6 +80,26 @@ var venusMesh;
                venusMat.map = THREE.ImageUtils.loadTexture('images/venusmap.jpg');
                venusMat.bumpMap = THREE.ImageUtils.loadTexture('images/Venus2-Bump.jpg');
                venusMat.bumpScale = 2;
+
+               //Atmosphere
+              AtmosMat = new THREE.ShaderMaterial({
+                uniforms:{
+                  "c": { type: "f", value: 0.3 },
+                  "p": { type: "f", value: 3.8},
+                  glowColor: { type: "c", value: new THREE.Color(0xFAF307)},
+                  viewVector: { type: "v3", value: camera.position}
+                },
+                vertexShader: document.getElementById('vertexShader').textContent,
+                fragmentShader: document.getElementById('fragmentShader').textContent,
+                side: THREE.BackSide,
+                blending: THREE.AdditiveBlending,
+                transparent: true
+              });
+
+              Atmos = new THREE.Mesh(venusGeo, AtmosMat);
+              Atmos.position = venusMesh.position;
+              Atmos.scale.multiplyScalar(1.2);
+              scene.add(Atmos);
                 
                 //STARS
                 var starGeo = new THREE.SphereGeometry (3000, 10, 100),
@@ -106,13 +130,17 @@ var venusMesh;
 
 			}
             
-             function render(){
-                 var delta = clock.getDelta();
-
-				venusMesh.rotation.y += rotationSpeed * delta;
-                renderer.clear();
-                renderer.render(scene, camera);
-                 
+        function render(){
+          var delta = clock.getDelta();
+          if (camera.position.x > 800){
+            if (zoomed){
+              camera.position.x -= 3;
             }
+          }
+
+				  venusMesh.rotation.y += rotationSpeed * delta;
+            renderer.clear();
+            renderer.render(scene, camera);      
+          }
 
 

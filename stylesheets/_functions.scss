@@ -1,0 +1,14 @@
+/*====================FUNCTIONS========================*/
+
+@function z-order($list, $position){
+  $z : index($list, $position);
+  
+  @if $z{
+  	@return $z;
+  }
+  
+  @else{
+  	@warn "There is no #{$position} position in the list";
+  	@return null;
+  }
+}

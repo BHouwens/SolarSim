@@ -3,6 +3,12 @@
     $desc = "The Sun is the star of the solar system. SolarSim is a free, 3D solar system simulator for younger learners to explore and learn from.";
     include ("header.php");
 ?>
+		<div class="info-container">
+			<h1>Sun</h1>
+			<p>The Sun sits at the centre of our solar system and is a star. All the planets orbit around it and it provides us with heat, warmth and 
+			energy. Even though it's so large, our Sun is considered to be only a medium sized star when compared with others in the galaxy.</p>
+			<button id="zoom">Zoom</button>
+		</div>
         <div id="container"></div>
         <script src="js/postprocessing/postProcess.min.js"></script>
         <script id="fragmentShader" type="x-shader/x-fragment">
@@ -70,5 +76,4 @@
 		</script>
 
         <script src="js/sun.js"></script>
-    </body>
-</html>
+<?php require ("footer.php"); ?>

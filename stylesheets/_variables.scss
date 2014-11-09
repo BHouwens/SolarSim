@@ -1,0 +1,27 @@
+	/*============ BASE VARIABLES =================*/
+	
+$root: "../";
+
+$path-css: $root + "stylesheets/";
+$path-sass: $path-css + "sass/";
+$path-js: $root + "js/";
+$path-img: $root + "img/";
+$path-fonts: $root + "fonts/";
+
+
+/*COLOURS
+==================================*/
+
+$main: #556270;
+$secondary: #4ecdc4;
+$highlight: #ff6b6b;
+$off-white: #ebebeb;
+
+
+/*MAPS
+==================================*/
+
+$border-map: (border-radius: 7px);
+$circle: (border-radius: 50%);
+$box-shadow: (box-shadow: 0 1px 6px 1px transparentize($main, 0.8));
+$no-shadow: (box-shadow: none);

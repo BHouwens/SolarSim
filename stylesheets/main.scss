@@ -1,7 +1,19 @@
 //VARIABLES
-$blue: #198F90;
+$main: #2A363B;
+$peach: #FF847C;
+$bloodPeach: #E84A5F;
 
 @import "typography";
+@import "buttons";
+@import "mixins";
+@import "placeholders";
+
+%menu-image{
+    @include size(50px);
+    display:block;
+    float: left;
+    transition: 0.3s;
+}
     
 //-------------------MAIN GOODS------------------------------//
     
@@ -13,8 +25,8 @@ body{
     display:block;
     overflow:hidden;
     height:100%;
-    width:50px;
-    background:$blue;
+    width:70px;
+    background:$main;
     transition:0.2s;
     left:0;
     top:0;
@@ -22,14 +34,145 @@ body{
     z-index:2;
     
     &:hover{
-        width:120px;
+        width:160px;
     }
+}
+
+
+
+#preloader{
+    @include size(100%);
+    position: fixed;
+    display: block;
+    background: $main;
+    z-index: 999;
+    padding-top:60px;
+    margin-top: -30px;
+    margin-left: -5px;
+    padding-right: 60px;
+    transition: 0.5s;
+    cursor: wait;
+}
+
+#preloader.complete{
+    opacity: 0;
+}
+
+#preloader img{
+    @extend %centre;
+    margin-top: 500px;
+    @include size(40px);
+}
+
+#main li:first-child img{
+    @extend %menu-image;
+    background: url('../images/sun-off.svg');
+}
+
+#main li:first-child:hover img{
+    background: url('../images/sun-on.svg');
+    transform: scale(1.2);
+}
+
+#main li:nth-child(2) img{
+    @extend %menu-image;
+    background: url('../images/mercury-off.svg');
+}
+
+#main li:nth-child(2):hover img{
+    background: url('../images/mercury-on.svg');
+    transform: scale(1.2);
+}
+
+#main li:nth-child(3) img{
+    @extend %menu-image;
+    background: url('../images/venus-off.svg');
+}
+
+#main li:nth-child(3):hover img{
+    background: url('../images/venus-on.svg');
+    transform: scale(1.2);
+}
+
+#main li:nth-child(4) img{
+    @extend %menu-image;
+    background: url('../images/earth-off.svg');
+}
+
+#main li:nth-child(4):hover img{
+    background: url('../images/earth-on.svg');
+    transform: scale(1.2);
+}
+
+#main li:nth-child(5) img{
+    @extend %menu-image;
+    background: url('../images/mars-off.svg');
+}
+
+#main li:nth-child(5):hover img{
+    background: url('../images/mars-on.svg');
+    transform: scale(1.2);
+}
+
+#main li:nth-child(6) img{
+    @extend %menu-image;
+    background: url('../images/jupiter-off.svg');
+}
+
+#main li:nth-child(6):hover img{
+    background: url('../images/jupiter-on.svg');
+    transform: scale(1.2);
+}
+
+#main li:nth-child(7) img{
+    @extend %menu-image;
+    background: url('../images/saturn-off.svg');
+}
+
+#main li:nth-child(7):hover img{
+    background: url('../images/saturn-on.svg');
+    transform: scale(1.2);
+}
+
+#main li:nth-child(8) img{
+    @extend %menu-image;
+    background: url('../images/uranus-off.svg');
+}
+
+#main li:nth-child(8):hover img{
+    background: url('../images/uranus-on.svg');
+    transform: scale(1.2);
+}
+
+#main li:nth-child(9) img{
+    @extend %menu-image;
+    background: url('../images/neptune-off.svg');
+}
+
+#main li:nth-child(9):hover img{
+    background: url('../images/neptune-on.svg');
+    transform: scale(1.2);
+}
+
+#main li a, #main li a p{
+    float: left;
+}
+
+#main li a p{
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+#main li{
+    clear: both;
+    width: 100%;
 }
 
 #main{
     list-style:none;
     padding:0;
     margin-left:0px;
+    width:120px;
 }
 
 #main a{
@@ -43,15 +186,48 @@ body{
     padding-bottom:20px;
     padding-top:20px;
     transition:0.4s;
-    
-    &:hover{
-        background:white;
-        color:black;
-    }
+    width: 150px;
 }
 
+.info-container{
+    display: block;
+    position: fixed;
+    width: 30%;
+    z-index: 2;
+    float: right;
+    right: 0;
+}
 
+.info-container p{
+    color: white;
+    max-width: 445px;
+    @include bodyCopy(22px, 400);
+}
 
+h1{
+    color: white;
+    font-size: 8em;
+    @include bodyCopy(8em, 400);
+}
+
+#zoom{
+    display: block;
+    color: white;
+    padding: 15px 35px;
+    text-decoration: none;
+    text-shadow: 0 1px $bloodPeach;
+    border: 2px solid $bloodPeach;
+    @include roundCorners(10px);
+    font-size: 16px;
+    transition:0.2s;
+    background:$peach;
+    cursor: pointer;
+
+    &:hover{
+        background: darken($peach, 5%);
+        border-bottom: 4px solid $bloodPeach;
+    }
+}
 
 
 
